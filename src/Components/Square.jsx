@@ -2,10 +2,10 @@ import React from "react";
 import "../App.css"
 
 
-const Square = ({value, chooseSquare}) => {
+const Square = (props) => {
     return (
-        <div className="square" onClick={chooseSquare}>
-            {value}
+        <div className="square" onClick={props.chooseSquare}>
+            {props.value}
         </div>
     )
 
