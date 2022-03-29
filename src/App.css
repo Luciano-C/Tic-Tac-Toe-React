@@ -5,7 +5,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
+
+p {
+  color: white;
+  margin-top: 5vw;
+  font-size: 2vw;
+  margin-bottom: 1vw;
+}
+  
 
 body {
   padding: 0;
@@ -20,7 +29,7 @@ body {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  margin-top: 8%;
+  margin-top: 0.5vw;
 }
 
 .row {
@@ -62,3 +71,28 @@ body {
 .square:active {
 background-color: #c0c0c0;
 }
+
+
+
+
+
+.btn-grad {background-image: linear-gradient(to right, #7474BF 0%, #348AC7  51%, #7474BF  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
