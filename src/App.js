@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { useState, useEffect } from "react";
 import Square from "./Components/Square"
-import { Patterns } from "./Patterns"
+import { checkIfWin, checkIfTie } from "./checkIf"
 
 
 
@@ -13,12 +13,25 @@ function App() {
 
   const [board, setBoard] = useState(["","","","","","","","",""]);
   const [player, setPlayer] = useState("X");
+  const [isGameOn, setIsGameOn] = useState(true);
 
+
+
+  useEffect(() => {
+   if (checkIfWin(board) !== "" && isGameOn) {
+     alert(`Winner is ${checkIfWin(board)}`)
+     setIsGameOn(false)
+   };
+   if (checkIfTie(board, isGameOn)) {
+     alert("Draw!")
+     setIsGameOn(false)
+   }
+  }, [board, isGameOn])
 
   const chooseSquare = (square) => {
     // Recorre todo el tablero y si el cuadrado seleccionado es igual al index, reemplaza el valor por el valor de "player", sino lo deja como está
     setBoard(board.map((value, index) => {
-      if (square === index && value === "") {
+      if (square === index && value === "" && isGameOn) {
         return player;
       }
       else {
