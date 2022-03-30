@@ -63,7 +63,7 @@ function TicTacToe() {
     return (
       <div className='App'>
         <p style={isGameOn ? { color: "white" } : { color: "#3de335" }}>{paragraphText}</p>
-        <button onClick={startOver} className="btn-grad">Start over</button>
+        
         <div className='board'>
           <div className='row'>
             <Square value={board[0]} chooseSquare={() => { chooseSquare(0) }} id="s0" />
@@ -81,6 +81,7 @@ function TicTacToe() {
             <Square value={board[8]} chooseSquare={() => { chooseSquare(8) }} id="s8" />
           </div>
         </div>
+        <button onClick={startOver} className="btn-grad">Start over</button>
       </div>
   
     );
