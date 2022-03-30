@@ -66,19 +66,19 @@ function TicTacToe() {
         
         <div className='board'>
           <div className='row'>
-            <Square value={board[0]} chooseSquare={() => { chooseSquare(0) }} id="s0" />
-            <Square value={board[1]} chooseSquare={() => { chooseSquare(1) }} id="s1" />
-            <Square value={board[2]} chooseSquare={() => { chooseSquare(2) }} id="s2" />
+            <Square value={board[0]} onClick={() => { chooseSquare(0) }} id="s0" />
+            <Square value={board[1]} onClick={() => { chooseSquare(1) }} id="s1" />
+            <Square value={board[2]} onClick={() => { chooseSquare(2) }} id="s2" />
           </div>
           <div className='row'>
-            <Square value={board[3]} chooseSquare={() => { chooseSquare(3) }} id="s3" />
-            <Square value={board[4]} chooseSquare={() => { chooseSquare(4) }} id="s4" />
-            <Square value={board[5]} chooseSquare={() => { chooseSquare(5) }} id="s5" />
+            <Square value={board[3]} onClick={() => { chooseSquare(3) }} id="s3" />
+            <Square value={board[4]} onClick={() => { chooseSquare(4) }} id="s4" />
+            <Square value={board[5]} onClick={() => { chooseSquare(5) }} id="s5" />
           </div>
           <div className='row'>
-            <Square value={board[6]} chooseSquare={() => { chooseSquare(6) }} id="s6" />
-            <Square value={board[7]} chooseSquare={() => { chooseSquare(7) }} id="s7" />
-            <Square value={board[8]} chooseSquare={() => { chooseSquare(8) }} id="s8" />
+            <Square value={board[6]} onClick={() => { chooseSquare(6) }} id="s6" />
+            <Square value={board[7]} onClick={() => { chooseSquare(7) }} id="s7" />
+            <Square value={board[8]} onClick={() => { chooseSquare(8) }} id="s8" />
           </div>
         </div>
         <button onClick={startOver} className="btn-grad">Start over</button>

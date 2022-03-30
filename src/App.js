@@ -2,6 +2,7 @@
 import React from 'react';
 import TicTacToe from './Components/TicTacToe';
 import Modal from './Components/Modal';
+import {useState} from "react";
 
 
 
@@ -9,13 +10,25 @@ import Modal from './Components/Modal';
 
 
 function App() {
+let isModal = true;
+
+if (isModal) {
+  return(
+    <Modal/>
+  )
+}
+else {
   return (
+    <TicTacToe/>
+  )
+}
+/*   return (
     <div>
       <Modal/>
-      {/* <TicTacToe /> */}
+      <TicTacToe />
     </div>
 
-  )
+  ) */
 };
 
 export default App;
