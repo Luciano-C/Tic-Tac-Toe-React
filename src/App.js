@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { useState, useEffect } from "react";
 import Square from "./Components/Square"
-import { checkIfWin, checkIfTie } from "./checkIf"
+import { getWinner, checkIfTie } from "./funcionesAdicionales"
 
 
 
@@ -19,9 +19,9 @@ function App() {
 
 
   useEffect(() => {
-    if (checkIfWin(board) !== "" && isGameOn) {
+    if (getWinner(board) !== "" && isGameOn) {
       setIsGameOn(false)
-      setParagraphText(`The winner is ${checkIfWin(board)}!`)
+      setParagraphText(`The winner is ${getWinner(board)}!`)
     }
 
     else if (checkIfTie(board, isGameOn)) {
