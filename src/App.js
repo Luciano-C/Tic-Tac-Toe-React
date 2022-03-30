@@ -64,7 +64,7 @@ function App() {
 
   return (
     <div className='App'>
-      <p>{paragraphText}</p>
+      <p style={isGameOn ? {color:"white"}:{color:"#3de335"}}>{paragraphText}</p>
       <button onClick={startOver} class="btn-grad">Start over</button>
       <div className='board'>
         <div className='row'>
