@@ -26,14 +26,15 @@ const Modal = (props) => {
         setPlayer2Weapon(weaponNotChosen);
     }, [weaponOfChoice, weaponNotChosen])
 
+
     const weaponHandler = (weaponOfChoice) => {
         if (isPlayer1Selecting && input1 !== "" && input2 !== "") {
             let weaponNotChosen = `${weaponOfChoice === "X" ? "O" : "X"}`
             setWeaponOfChoice(weaponOfChoice);
             setWeaponNoChosen(weaponNotChosen);
             setIsplayer1Selecting(false);
-            let dataToSend = [player1, player2, weaponOfChoice, weaponNotChosen, isPlayer1Selecting];
-            /* console.log(dataToSend); */
+            let dataToSend = [player1, player2, weaponOfChoice, weaponNotChosen];
+           /*  console.log(dataToSend); */
             props.passData(dataToSend);
 
         }
@@ -46,10 +47,10 @@ const Modal = (props) => {
     }
 
     //Temporales para indicar que se tiene cada jugador y sus simbolos (armas)
-    console.log(player1);
+   /*  console.log(player1);
     console.log(player2)
     console.log(player1Weapon);
-    console.log(player2Weapon);
+    console.log(player2Weapon); */
 
     return (
         <div className='App'>
