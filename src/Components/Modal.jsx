@@ -12,31 +12,27 @@ const Modal = (props) => {
     const [player1Weapon, setPlayer1Weapon] = useState("");
     const [player2Weapon, setPlayer2Weapon] = useState("");
     const [weaponOfChoice, setWeaponOfChoice] = useState("");
-    const [weaponNotChosen, setWeaponNotChosen] = useState("");
     const [isPlayer1Selecting, setIsplayer1Selecting] = useState(true);
-    const [dataToSend, setDataToSend] = useState([]);
 
-   useEffect(() => {
+
+    useEffect(() => {
         setPlayer1(input1);
         setPlayer2(input2);
     }, [input1, input2])
 
-/*     useEffect(() => {
-      
-    }, [weaponOfChoice, weaponNotChosen]) */
+    useEffect(() => {
+        setPlayer1Weapon(weaponOfChoice);
+    }, [weaponOfChoice])
 
     const weaponHandler = (weaponOfChoice) => {
         if (isPlayer1Selecting && input1 !== "" && input2 !== "") {
             setWeaponOfChoice(weaponOfChoice);
-            setWeaponNotChosen(`${weaponOfChoice === "X" ? "O" : "X"}`);
-           
-            setPlayer1Weapon(weaponOfChoice);
-            setPlayer2Weapon(weaponNotChosen);
-            console.log(player1Weapon, "hola");
-            setDataToSend([player1, player2, player1Weapon, player2Weapon]);
-            /* const data = [player1Weapon, player2Weapon]; */
-            props.passData(dataToSend);
+            let weaponNotChosen = `${weaponOfChoice === "X" ? "O" : "X"}`
             setIsplayer1Selecting(false);
+            let dataToSend = [player1, player2, weaponOfChoice, weaponNotChosen, isPlayer1Selecting];
+            console.log(dataToSend);
+            props.passData(dataToSend);
+            
         }
         else if (!isPlayer1Selecting) {
             console.log("Ready")
@@ -47,10 +43,10 @@ const Modal = (props) => {
     }
 
     //Temporales para indicar que se tiene cada jugador y sus simbolos (armas)
-  /*   console.log(player1);
+    console.log(player1);
     console.log(player2)
     console.log(player1Weapon);
-    console.log(player2Weapon); */
+    console.log(player2Weapon);
     return (
         <div className='App'>
             <p style={{ color: "white" }}>Pick a Weapon</p>
@@ -58,12 +54,12 @@ const Modal = (props) => {
                 <div className='chooseWeaponMenu'>
                     <p style={{ color: "white" }} id="modal-p2">CHOOSE YOUR WEAPON</p>
                     <div className='nameOptions'>
-                        <input id='modalInput1' placeholder='Player 1' onChange={(e) => {setInput1(e.target.value)}}/>
-                        <input id='modalInput2' placeholder='Player 2' onChange={(e) => {setInput2(e.target.value)}}/>
+                        <input id='modalInput1' placeholder='Player 1' onChange={(e) => { setInput1(e.target.value) }} />
+                        <input id='modalInput2' placeholder='Player 2' onChange={(e) => { setInput2(e.target.value) }} />
                     </div>
                     <div className='weaponOptions'>
-                        <Square value="X" id="menuSquareX" onClick={() => {weaponHandler("X")}}/>
-                        <Square value="O" id="menuSquareO" onClick={() => {weaponHandler("O")}}/>
+                        <Square value="X" id="menuSquareX" onClick={() => { weaponHandler("X") }} />
+                        <Square value="O" id="menuSquareO" onClick={() => { weaponHandler("O") }} />
                     </div>
 
                 </div>
