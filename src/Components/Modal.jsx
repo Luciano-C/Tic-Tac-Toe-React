@@ -15,28 +15,29 @@ const Modal = (props) => {
     const [weaponNotChosen, setWeaponNoChosen] = useState("");
     const [isPlayer1Selecting, setIsplayer1Selecting] = useState(true);
 
-
+    // Actualiza nombre de jugadores de acuerdo al input.
     useEffect(() => {
         setPlayer1(input1);
         setPlayer2(input2);
     }, [input1, input2])
-
+    // Actualiza armas (símbolos) de cada jugador de acuerdo a lo elegido con el click.
     useEffect(() => {
         setPlayer1Weapon(weaponOfChoice);
         setPlayer2Weapon(weaponNotChosen);
     }, [weaponOfChoice, weaponNotChosen])
 
-
+    // Función onClick para los cuadros con los símbolos.
+    // Requiere que ambos nombres estén ingresados. Actualiza arma seleccionada y no seleccionada y asigna la seleccionada al jugador 1.
+    // Posteriormente termina el modo de selección y envía la información a la App en forma de arreglo.
     const weaponHandler = (weaponOfChoice) => {
         if (isPlayer1Selecting && input1 !== "" && input2 !== "") {
             let weaponNotChosen = `${weaponOfChoice === "X" ? "O" : "X"}`
             setWeaponOfChoice(weaponOfChoice);
             setWeaponNoChosen(weaponNotChosen);
             setIsplayer1Selecting(false);
+            // Envía información a App.
             let dataToSend = [player1, player2, weaponOfChoice, weaponNotChosen];
-           /*  console.log(dataToSend); */
             props.passData(dataToSend);
-
         }
         else if (!isPlayer1Selecting) {
             console.log("Ready")
@@ -46,11 +47,6 @@ const Modal = (props) => {
         }
     }
 
-    //Temporales para indicar que se tiene cada jugador y sus simbolos (armas)
-   /*  console.log(player1);
-    console.log(player2)
-    console.log(player1Weapon);
-    console.log(player2Weapon); */
 
     return (
         <div className='App'>

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Square from "./Square"
 import { getWinner, checkIfTie } from "../funcionesAdicionales"
 
-/* let dataToSend = [player1, player2, weaponOfChoice, weaponNotChosen, isPlayer1Selecting]; */
+
 
 function TicTacToe(props) {
   const namePlayer1 = props.player1;
@@ -22,24 +22,29 @@ function TicTacToe(props) {
 
 
   useEffect(() => {
+    // Chequea si hay ganador, si lo hay termina el juego.
     if (getWinner(board) !== "" && isGameOn) {
-      setIsGameOn(false)
-      let winningPlayer = getWinner(board) === weaponPlayer1 ? namePlayer1:namePlayer2
-      setParagraphText(`The winner is ${winningPlayer}!`)
+      setIsGameOn(false);
+    // Los jugadores en el código están definidos como "X" o "O", esta línea enlaza los nombres con los símbolos correspondientes.
+      let winningPlayer = getWinner(board) === weaponPlayer1 ? namePlayer1 : namePlayer2;
+      setParagraphText(`The winner is ${winningPlayer}!`);
     }
 
+    // Chequea si hay empate y termina el juego si es el caso.
     else if (checkIfTie(board, isGameOn)) {
-      setIsGameOn(false)
-      setParagraphText("Draw!")
+      setIsGameOn(false);
+      setParagraphText("Draw!");
     }
+    // Mientras el juego esté en marcha muestra a quien le toca. Nuevamente hay una línea para hacer enlace con nombres y símbolos.
     else if (isGameOn) {
-      setParagraphText(`It's ${player}'s turn`)
+      let jugadorActual = player === weaponPlayer1 ? namePlayer1 : namePlayer2;
+      setParagraphText(`It's ${jugadorActual}'s turn: ${player}`);
     }
 
-  }, [board, isGameOn, player])
+  }, [board, isGameOn, player]);
 
   const chooseSquare = (square) => {
-    // Recorre todo el tablero y si el cuadrado seleccionado es igual al index, reemplaza el valor por el valor de "player", sino lo deja como está
+    // Recorre todo el tablero y si el cuadrado seleccionado es igual al index, reemplaza el valor por el valor de "player", sino lo deja como está.
     setBoard(board.map((value, index) => {
       if (square === index && value === "" && isGameOn) {
         return player;
@@ -63,6 +68,10 @@ function TicTacToe(props) {
     setBoard(["", "", "", "", "", "", "", "", ""]);
     setPlayer("X");
     setIsGameOn(true);
+    // Manda datos a App.
+    let dataToSend = [];
+    props.passData(dataToSend);
+
   }
 
 
