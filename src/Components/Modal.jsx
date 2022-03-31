@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Square from "./Square"
 
 
-const Modal = () => {
+const Modal = (props) => {
     const [input1, setInput1] = useState("");
     const [input2, setInput2] = useState("");
     const [player1, setPlayer1] = useState("");
@@ -14,22 +14,29 @@ const Modal = () => {
     const [weaponOfChoice, setWeaponOfChoice] = useState("");
     const [weaponNotChosen, setWeaponNotChosen] = useState("");
     const [isPlayer1Selecting, setIsplayer1Selecting] = useState(true);
+    const [dataToSend, setDataToSend] = useState([]);
 
    useEffect(() => {
         setPlayer1(input1);
         setPlayer2(input2);
     }, [input1, input2])
 
-    useEffect(() => {
-        setPlayer1Weapon(weaponOfChoice);
-        setPlayer2Weapon(weaponNotChosen);
-    }, [weaponOfChoice, weaponNotChosen])
+/*     useEffect(() => {
+      
+    }, [weaponOfChoice, weaponNotChosen]) */
 
     const weaponHandler = (weaponOfChoice) => {
         if (isPlayer1Selecting && input1 !== "" && input2 !== "") {
             setWeaponOfChoice(weaponOfChoice);
             setWeaponNotChosen(`${weaponOfChoice === "X" ? "O" : "X"}`);
-            setIsplayer1Selecting(false)  ;  
+           
+            setPlayer1Weapon(weaponOfChoice);
+            setPlayer2Weapon(weaponNotChosen);
+            console.log(player1Weapon, "hola");
+            setDataToSend([player1, player2, player1Weapon, player2Weapon]);
+            /* const data = [player1Weapon, player2Weapon]; */
+            props.passData(dataToSend);
+            setIsplayer1Selecting(false);
         }
         else if (!isPlayer1Selecting) {
             console.log("Ready")
@@ -40,10 +47,10 @@ const Modal = () => {
     }
 
     //Temporales para indicar que se tiene cada jugador y sus simbolos (armas)
-    console.log(player1);
+  /*   console.log(player1);
     console.log(player2)
     console.log(player1Weapon);
-    console.log(player2Weapon);
+    console.log(player2Weapon); */
     return (
         <div className='App'>
             <p style={{ color: "white" }}>Pick a Weapon</p>

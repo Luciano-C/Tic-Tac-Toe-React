@@ -11,6 +11,18 @@ import {useState} from "react";
 
 function App() {
 let isModal = true;
+const[modalData, setModalData] = useState([]);
+
+const passData = (data) => {
+  setModalData(data); 
+}
+
+return (
+  <div>
+    <Modal passData={passData}/>
+    <p style={{color:"white"}}>{modalData}</p>
+  </div>
+)
 
 if (isModal) {
   return(
@@ -22,6 +34,10 @@ else {
     <TicTacToe/>
   )
 }
+
+
+
+
 /*   return (
     <div>
       <Modal/>
