@@ -39,9 +39,6 @@ const Modal = (props) => {
             let dataToSend = [player1, player2, weaponOfChoice, weaponNotChosen];
             props.passData(dataToSend);
         }
-        else if (!isPlayer1Selecting) {
-            console.log("Ready")
-        }
         else {
             alert("Input 2 names")
         }
