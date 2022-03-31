@@ -33,7 +33,7 @@ function App() {
   }
   else {
     return (
-      <TicTacToe player1={modalData[0]} player2={modalData[1]} weaponOfChoice={modalData[2]} weaponNotChosen={modalData[3]} passData={passData}/>
+      <TicTacToe player1={modalData[0]} player2={modalData[1]} weaponOfChoice={modalData[2]} passData={passData}/>
     )
   }
 };

@@ -11,7 +11,6 @@ function TicTacToe(props) {
   const namePlayer1 = props.player1;
   const namePlayer2 = props.player2;
   const weaponPlayer1 = props.weaponOfChoice;
-  const weaponPlayer2 = props.weaponNotChosen;
   const [board, setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
   const [player, setPlayer] = useState(weaponPlayer1);
   const [isGameOn, setIsGameOn] = useState(true);
@@ -41,7 +40,7 @@ function TicTacToe(props) {
       setParagraphText(`It's ${jugadorActual}'s turn: ${player}`);
     }
 
-  }, [board, isGameOn, player]);
+  }, [board, isGameOn, player, namePlayer1, namePlayer2, weaponPlayer1]);
 
   const chooseSquare = (square) => {
     // Recorre todo el tablero y si el cuadrado seleccionado es igual al index, reemplaza el valor por el valor de "player", sino lo deja como está.
