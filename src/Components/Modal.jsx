@@ -12,6 +12,7 @@ const Modal = (props) => {
     const [player1Weapon, setPlayer1Weapon] = useState("");
     const [player2Weapon, setPlayer2Weapon] = useState("");
     const [weaponOfChoice, setWeaponOfChoice] = useState("");
+    const [weaponNotChosen, setWeaponNoChosen] = useState("");
     const [isPlayer1Selecting, setIsplayer1Selecting] = useState(true);
 
 
@@ -22,17 +23,19 @@ const Modal = (props) => {
 
     useEffect(() => {
         setPlayer1Weapon(weaponOfChoice);
-    }, [weaponOfChoice])
+        setPlayer2Weapon(weaponNotChosen);
+    }, [weaponOfChoice, weaponNotChosen])
 
     const weaponHandler = (weaponOfChoice) => {
         if (isPlayer1Selecting && input1 !== "" && input2 !== "") {
-            setWeaponOfChoice(weaponOfChoice);
             let weaponNotChosen = `${weaponOfChoice === "X" ? "O" : "X"}`
+            setWeaponOfChoice(weaponOfChoice);
+            setWeaponNoChosen(weaponNotChosen);
             setIsplayer1Selecting(false);
             let dataToSend = [player1, player2, weaponOfChoice, weaponNotChosen, isPlayer1Selecting];
-            console.log(dataToSend);
+            /* console.log(dataToSend); */
             props.passData(dataToSend);
-            
+
         }
         else if (!isPlayer1Selecting) {
             console.log("Ready")
@@ -47,6 +50,7 @@ const Modal = (props) => {
     console.log(player2)
     console.log(player1Weapon);
     console.log(player2Weapon);
+
     return (
         <div className='App'>
             <p style={{ color: "white" }}>Pick a Weapon</p>

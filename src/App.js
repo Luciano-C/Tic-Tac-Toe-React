@@ -10,23 +10,23 @@ import {useState} from "react";
 
 
 function App() {
-let isModal = true;
+const [isModal, setIsModal] = useState(true);
 const[modalData, setModalData] = useState([]);
 
 const passData = (data) => {
   setModalData(data); 
 }
 
-return (
+/* return (
   <div>
     <Modal passData={passData}/>
     <p style={{color:"white"}}>{modalData}</p>
   </div>
-)
+) */
 
 if (isModal) {
   return(
-    <Modal/>
+    <Modal passData={passData}/>
   )
 }
 else {
